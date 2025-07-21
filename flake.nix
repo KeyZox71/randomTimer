@@ -30,7 +30,7 @@
             src = self;
             pname = "randomTimer";
             subPackages = [ "cmd/randomTimer" ];
-            version = "0.1.0";
+            version = "0.1.1";
             vendorHash = "sha256-mXx15hWdUJAM+LUBo49NU5gY0hNzz5T+9gZ1GlUYxM0="; 
           };
         }

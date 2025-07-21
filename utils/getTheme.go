@@ -16,10 +16,13 @@ type Theme struct {
 func isDarkMode() bool {
 	out, err := exec.Command("gsettings", "get", "org.gnome.desktop.interface", "color-scheme").Output()
 	if err != nil {
-		return true // fallback to dark
+		out, err = exec.Command("dconf", "read", "/org/gnome/desktop/interface/color-scheme").Output()
+		if err != nil {
+			return true // fallback to dark
+		}
 	}
 	s := strings.TrimSpace(string(out))
-	return strings.Contains(strings.ToLower(s), "dark")
+	return strings.Contains(strings.ToLower(s), "prefer-dark")
 }
 
 func GetThemeStyle() Theme {
